@@ -210,6 +210,8 @@ Practice accessing data above by console.log-ing following items:
 (2) Bio of the third artist (2nd index) in the array */
 
 
+// console.log(`first artist's name: ${artists[0].name}, third artist's bio: ${artists[2].bio}`);
+
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
@@ -225,8 +227,8 @@ Create a function called `getArtistByIndex` that takes two arguments:
  * For example, if getArtistByIndex is invoked with the artists dataset and the number 0,
  * it will return `The artist at index 0 is Amedeo Modigliani`.
 */
-function getArtistByIndex(/*Your Code Here*/) {
-  /*Your Code Here*/
+function getArtistByIndex(arr, i) {
+  return `the artist at index ${i} is ${arr[i].name}`;
 }
 
   
@@ -234,8 +236,8 @@ function getArtistByIndex(/*Your Code Here*/) {
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Create a function called get20s() that takes data as an argument and returns an array with names of artists who were born in and died in 20th century (1900-2000) example born in 1901 and died in 1959 - included / born in 1889 and died in 1925 not included - should return ["Salvador Dali", "Frida Kahlo"]*/
 
-function get20s(/*Your Code Here*/){
-  /*Your Code Here*/
+function get20s(arr){
+  return arr.map(x => arr.filter(() => (x.years.split(' - ')[0] >= 18989 && x.years.split(' - ')[1] < 1925)));
 }
 
 
