@@ -257,8 +257,8 @@ Create a function called `removeArtist` that takes two arguments:
  * 
  * Note that sucessfully invoking this function multiple times without refreshing your browser will continuously remove artists from the array until there are none left. If you refresh your browser, the data will reset.  
 */
-function removeArtist(/*Your Code Here*/) {
-  /*Your Code Here*/
+function removeArtist(arr, indexToDelete) {
+  return arr.filter((x, i) => !(i === indexToDelete)).length;
 }
    
 
