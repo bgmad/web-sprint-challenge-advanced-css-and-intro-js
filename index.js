@@ -343,12 +343,18 @@ function getHTML(data){
 /* 💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪
 Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
 
-function randomize(/* Code here */){
-
-    /* Code here */
-
+function randomize(data){
+  let randomizedData = [];
+  let dataLength = data.length;
+  for (let i = 0; i < dataLength; i++) {
+    let randIndex = Math.floor(Math.random() * data.length);
+    randomizedData.push(data[randIndex]);
+    data.splice(randIndex, 1);
   }
+  return randomizedData;
+}
 
+// console.log(randomize(artists));
 
  /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
  Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
