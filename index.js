@@ -276,9 +276,10 @@ bio: Add 1-2 sentences (or use lorem ipsum)
 
 At the end, this function should return the new array with information added"*/
 
-function addArtist(/*Your Code Here*/){
-  /*Your Code Here*/
-  }
+function addArtist(arr, obj){ // -------------maybe get this to one line? -------------------
+  arr.push(obj);
+  return arr;
+}
 
   
 
