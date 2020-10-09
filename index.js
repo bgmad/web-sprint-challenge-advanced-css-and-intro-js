@@ -292,7 +292,7 @@ and returns an array with names of artists who painted more than 100 paintings.
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ..."Albrecht Dürer"]*/
 
-function lotsOfArt(arr){
+function lotsOfArt(arr){ 
   return arr.filter(obj => (obj.paintings > 100)).map(filteredObj => filteredObj.name);
 }
 
@@ -321,11 +321,23 @@ The function should console.log 50 chunks of HTML code that match the structure 
 
 ‼️ You do **NOT** need to get these to display on your page, but you can copy and paste the result into your HTML file if you'd like to see what that would look like. */
 
-function getHTML(/* Code here */){
-
-    /* Code here */
-
+function getHTML(data){
+  let allHTML = [];
+  for (let i in data){
+    allHTML.push(`<div id="artist">
+    <div class="image">
+        <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/starry-night-by-vincent-van-gogh-vincent-van-gogh.jpg"/>
+    </div>
+    <div class="name">
+       <a href=${data[i].wikipedia}>${data[i].name}</a>
+    </div>
+    <div class=${data[i].bio}</div>
+    </div>`);
   }
+  return allHTML;
+}
+
+// console.log(getHTML(artists));
 
 
 /* 💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪
