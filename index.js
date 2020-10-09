@@ -210,6 +210,8 @@ Practice accessing data above by console.log-ing following items:
 (2) Bio of the third artist (2nd index) in the array */
 
 
+// console.log(`first artist's name: ${artists[0].name}, third artist's bio: ${artists[2].bio}`);
+
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
@@ -225,8 +227,8 @@ Create a function called `getArtistByIndex` that takes two arguments:
  * For example, if getArtistByIndex is invoked with the artists dataset and the number 0,
  * it will return `The artist at index 0 is Amedeo Modigliani`.
 */
-function getArtistByIndex(/*Your Code Here*/) {
-  /*Your Code Here*/
+function getArtistByIndex(arr, i) {
+  return `the artist at index ${i} is ${arr[i].name}`;
 }
 
   
@@ -234,8 +236,12 @@ function getArtistByIndex(/*Your Code Here*/) {
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Create a function called get20s() that takes data as an argument and returns an array with names of artists who were born in and died in 20th century (1900-2000) example born in 1901 and died in 1959 - included / born in 1889 and died in 1925 not included - should return ["Salvador Dali", "Frida Kahlo"]*/
 
-function get20s(/*Your Code Here*/){
-  /*Your Code Here*/
+function get20s(arr){
+  return arr.map(function (obj) {
+    if (obj.years.split(' - ')[0] >= 1901 && obj.years.split(' - ')[1] <= 2000) { //might be able to clean this up later
+      return obj.name;
+    }
+  }).filter(val => (val != null));
 }
 
 
@@ -251,8 +257,8 @@ Create a function called `removeArtist` that takes two arguments:
  * 
  * Note that sucessfully invoking this function multiple times without refreshing your browser will continuously remove artists from the array until there are none left. If you refresh your browser, the data will reset.  
 */
-function removeArtist(/*Your Code Here*/) {
-  /*Your Code Here*/
+function removeArtist(arr, indexToDelete) {
+  return arr.filter((x, i) => !(i === indexToDelete)).length;
 }
    
 
@@ -270,9 +276,10 @@ bio: Add 1-2 sentences (or use lorem ipsum)
 
 At the end, this function should return the new array with information added"*/
 
-function addArtist(/*Your Code Here*/){
-  /*Your Code Here*/
-  }
+function addArtist(arr, obj){ // -------------maybe get this to one line? -------------------
+  arr.push(obj);
+  return arr;
+}
 
   
 
@@ -285,8 +292,8 @@ and returns an array with names of artists who painted more than 100 paintings.
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ..."Albrecht Dürer"]*/
 
-function lotsOfArt(/*Your Code Here*/){
-  /*Your Code Here*/
+function lotsOfArt(arr){ 
+  return arr.filter(obj => (obj.paintings > 100)).map(filteredObj => filteredObj.name);
 }
 
 
@@ -314,22 +321,40 @@ The function should console.log 50 chunks of HTML code that match the structure 
 
 ‼️ You do **NOT** need to get these to display on your page, but you can copy and paste the result into your HTML file if you'd like to see what that would look like. */
 
-function getHTML(/* Code here */){
-
-    /* Code here */
-
+function getHTML(data){
+  let allHTML = [];
+  for (let i in data){
+    allHTML.push(`<div id="artist">
+    <div class="image">
+        <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/starry-night-by-vincent-van-gogh-vincent-van-gogh.jpg"/>
+    </div>
+    <div class="name">
+       <a href=${data[i].wikipedia}>${data[i].name}</a>
+    </div>
+    <div class=${data[i].bio}</div>
+    </div>`);
   }
+  return allHTML;
+}
+
+// console.log(getHTML(artists));
 
 
 /* 💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪
 Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
 
-function randomize(/* Code here */){
-
-    /* Code here */
-
+function randomize(data){
+  let randomizedData = [];
+  let dataLength = data.length;
+  for (let i = 0; i < dataLength; i++) {
+    let randIndex = Math.floor(Math.random() * data.length);
+    randomizedData.push(data[randIndex]);
+    data.splice(randIndex, 1);
   }
+  return randomizedData;
+}
 
+// console.log(randomize(artists));
 
  /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
  Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
